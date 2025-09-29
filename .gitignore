@@ -1,0 +1,37 @@
+# Model files
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+*.mlx
+
+# Training artifacts
+checkpoint-*/
+optimizer.pt
+rng_state.pth
+scheduler.pt
+trainer_state.json
+training_args.bin
+
+# Cache
+.cache/
+__pycache__/
+*.pyc
+
+# Large directories
+base-model/
+*/base-model/
+*/finetuned/
+*/training/
+*/gguf/
+mlx/
+*/mlx/
+
+# Keep only scripts and configs
+!scripts/
+!tests/
+!Makefile
+!pytest.ini
+!*.py
+!*.md
