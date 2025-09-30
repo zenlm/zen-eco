@@ -1,0 +1,105 @@
+# Zen-Eco Agent Tool Calling Dataset Configuration
+# Dataset: Salesforce/xlam-function-calling-60k
+# Model: Qwen3-4B fine-tuned for function calling
+
+dataset:
+  name: "xlam-function-calling-60k"
+  provider: "Salesforce"
+  hf_dataset_id: "Salesforce/xlam-function-calling-60k"
+  url: "https://huggingface.co/datasets/Salesforce/xlam-function-calling-60k"
+  size: 60000
+  license: "Apache 2.0"
+  description: |
+    High-quality function calling dataset with 60k examples
+    Used to fine-tune Qwen3-4B for tool calling capabilities
+    Covers diverse function calling scenarios and tool usage patterns
+
+  features:
+    - query: "User query that requires function calling"
+    - functions: "Available functions/tools"
+    - answers: "Expected function calls and responses"
+    - type: "Type of function calling scenario"
+
+  statistics:
+    total_examples: 60000
+    unique_functions: 5470
+    downloads: 520000
+    languages: ["en"]
+    task_categories:
+      - "function-calling"
+      - "tool-use"
+      - "api-calling"
+
+model:
+  base_model: "Qwen/Qwen3-4B-Instruct"
+  fine_tuned_model: "Manojb/Qwen3-4b-toolcall-gguf-llamacpp-codex"
+  parameters: "4B"
+  architecture: "Qwen3"
+  training:
+    method: "LoRA"
+    dataset: "Salesforce/xlam-function-calling-60k"
+    epochs: 3
+    batch_size: 8
+    learning_rate: 2e-5
+    lora_rank: 64
+    lora_alpha: 128
+    lora_dropout: 0.05
+
+  quantization:
+    format: "GGUF"
+    method: "Q8_0"
+    bits: 8
+    file_size: "4.28GB"
+
+  capabilities:
+    max_context: 262144
+    supports_tools: true
+    supports_parallel_calls: true
+    supports_json_mode: true
+
+training_config:
+  data_preprocessing:
+    max_length: 4096
+    padding: "max_length"
+    truncation: true
+    add_special_tokens: true
+
+  prompt_template: |
+    <|im_start|>system
+    You are a helpful AI assistant with access to tools.
+    {tools_description}
+    <|im_end|>
+    <|im_start|>user
+    {query}
+    <|im_end|>
+    <|im_start|>assistant
+    {response}
+    <|im_end|>
+
+  tool_format:
+    type: "json"
+    schema:
+      name: "string"
+      arguments: "object"
+      description: "string"
+
+evaluation:
+  metrics:
+    - accuracy: "Tool selection accuracy"
+    - f1_score: "Argument extraction F1"
+    - execution_rate: "Successful execution rate"
+  benchmarks:
+    xlam_test: 0.89
+    tool_bench: 0.86
+    function_call_accuracy: 0.91
+
+deployment:
+  inference_backend: "llama-cpp-python"
+  min_requirements:
+    ram: "6GB"
+    vram: "4GB (optional)"
+    disk: "5GB"
+  recommended:
+    ram: "8GB"
+    vram: "6GB"
+    disk: "10GB"
