@@ -1,0 +1,24 @@
+# Requirements for Zen-Eco Agent Tool Calling Module
+# Model: Qwen3-4B fine-tuned on Salesforce/xlam-function-calling-60k
+
+# Core dependencies
+llama-cpp-python>=0.2.0
+huggingface-hub>=0.19.0
+pyyaml>=6.0
+datasets>=2.14.0
+
+# Optional dependencies for training
+transformers>=4.35.0
+peft>=0.6.0  # For LoRA
+accelerate>=0.24.0
+bitsandbytes>=0.41.0
+
+# Utilities
+tqdm>=4.66.0
+numpy>=1.24.0
+torch>=2.0.0  # For training only
+
+# Development
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0
