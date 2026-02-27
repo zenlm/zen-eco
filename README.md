@@ -1,8 +1,7 @@
 # Zen Eco - 4B Efficient Language Model Family
 
-**Organization**: [Zen LM](https://zenlm.org) (Hanzo AI × Zoo Labs Foundation)  
-**Base Model**: Qwen/Qwen3-3B  
-**Parameters**: ~4B  
+**Organization**: [Zen LM](https://zenlm.org) (Hanzo AI × Zoo Labs Foundation)
+**Parameters**: ~4B
 **License**: Apache 2.0  
 **Context Window**: 32,768 tokens
 
@@ -10,7 +9,7 @@
 
 ## Model Overview
 
-Zen Eco is a family of 4-billion parameter language models designed for **balanced performance and efficiency**. Built on the Qwen3-3B architecture, Zen Eco delivers strong capabilities across a wide range of tasks while maintaining cost-effective deployment.
+Zen Eco is a family of 4-billion parameter language models designed for **balanced performance and efficiency**. Built on a 4B foundation architecture, Zen Eco delivers strong capabilities across a wide range of tasks while maintaining cost-effective deployment.
 
 The Zen Eco family includes specialized variants:
 - **[zen-eco-4b-instruct](https://huggingface.co/zenlm/zen-eco-4b-instruct)** - General instruction following
@@ -45,7 +44,7 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))
 ### zen-eco-4b-instruct
 **Best for**: General-purpose instruction following and conversational AI
 
-- 4B parameters (Qwen3-3B base)
+- 4B parameters
 - 32K context window
 - Multiple formats: SafeTensors, GGUF, MLX
 - Optimized for balanced quality and speed
@@ -144,7 +143,7 @@ While this base repository doesn't contain model weights (see variants above), t
 
 All Zen Eco models are trained using:
 - **Framework**: [zoo-gym](https://github.com/zenlm/gym)
-- **Base**: Qwen3-3B (NOT Qwen2!)
+- **Base**: 4B foundation architecture
 - **Method**: Supervised fine-tuning with identity training
 - **Data**: Zen agentic dataset + specialized task data
 
