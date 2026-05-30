@@ -15,7 +15,7 @@ make all
 
 ### zen-eco-4b-instruct
 - Base instruction-following model
-- 4B parameters (Qwen3 architecture)
+- 4B parameters ( architecture)
 - Zen identity training
 - Optimized for general tasks
 
@@ -174,8 +174,8 @@ brew install python@3.13
 ## Architecture Details
 
 ### Base Model
-- Qwen2.5-3B-Instruct (default)
-- Qwen3 architecture
+- -3B-Instruct (default)
+- architecture
 - 3.09B parameters
 - 151936 vocab size
 
